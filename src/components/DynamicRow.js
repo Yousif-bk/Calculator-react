@@ -5,15 +5,19 @@ function DynamicRow() {
 
   // initial state
   const [rowsData, setRowsData] = useState([]);
-  const [result, setResult] = useState();
+  const [result, setResult] = useState(0);
 
 
 
 // calculation
   const calculation = (rowsInput) => {
     let sum;
-    rowsInput.reduce((accumulator, obj) => {
-      if (obj.calculation == "true") {
+    array.reduce((accumulator, obj) => {
+      if(accumulator == undefined && obj.calculation == "false"){
+        setResult(result - Number(array[0].numValue));
+        // setResult(sum)
+      }
+      else if (accumulator !== undefined && obj.calculation == "true") {
         sum = accumulator + Number(obj.numValue);
         setResult(sum);
       } 
@@ -27,6 +31,7 @@ function DynamicRow() {
     const rowsInput = {
       numValue: "",
       calculation: "true",
+      disabled: false
     };
     setRowsData([...rowsData, rowsInput]);
   };
@@ -38,7 +43,7 @@ function DynamicRow() {
     const { name, value } = evnt.target;
     const rowsInput = [...rowsData];
     rowsInput[index][name] = value;
-    console.log(rowsInput, "rowsInput");
+    // console.log(rowsInput, "rowsInput");
 
     // Call calculation method
     calculation(rowsInput);
