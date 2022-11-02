@@ -6,7 +6,6 @@ function DynamicRow() {
   // initial state
   const [rowsData, setRowsData] = useState([]);
   const [result, setResult] = useState();
-  const [disabled, setDisabled] = useState(false)
 
 
 
@@ -32,16 +31,7 @@ function DynamicRow() {
     setRowsData([...rowsData, rowsInput]);
   };
 
-  const disableRow = (index, evnt) =>{
-    const { name, value } = evnt.target;
-    const rowsInput = [...rowsData];
-    rowsInput[index][name] = value;
-    console.log(rowsInput, "ererer");
-
-    console.log("index",index)
-    setDisabled(true)
-  }
-
+ 
   // handle Change
   const handleChange = (index, evnt) => {
     evnt.preventDefault();
