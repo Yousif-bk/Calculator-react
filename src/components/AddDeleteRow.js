@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 
 function AddDeleteRow({ rowsData, deleteRows,  handleChange }) {
-  const [disabled, setDisabled] = useState(false)
+  // const [disabled, setDisabled] = useState(false)
 
   const disableRow = (index, evnt)=> {
+    console.log(index)
     const { name, value } = evnt.target;
     const rowsInput = [...rowsData];
     rowsInput[index][name] = value;
 
+    rowsInput[index].disabled = true
 
-    setDisabled(true)
+    // setDisabled(true)
   }
 
   return rowsData.map((data, index) => {
-    const { numValue,calculation } = data;
+    const { numValue,calculation, disabled } = data;
     return (
       <ul key={index}>
         <li className="d-flex mb-3">
