@@ -10,9 +10,9 @@ function DynamicRow() {
 
 
 // calculation
-  const calculation = (array) => {
+  const calculation = (rowsInput) => {
     let sum;
-    array.reduce((accumulator, obj) => {
+    rowsInput.reduce((accumulator, obj) => {
       if (obj.calculation == "true") {
         sum = accumulator + Number(obj.numValue);
         setResult(sum);
