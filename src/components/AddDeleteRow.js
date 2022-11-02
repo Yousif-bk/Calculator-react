@@ -17,11 +17,14 @@ function AddDeleteRow({ rowsData, deleteRows,  handleChange }) {
     return (
       <ul key={index}>
         <li className="d-flex mb-3">
-          <select value={calculation} name="calculation" onChange={(evnt) => handleChange(index, evnt)}>
+          <select
+           disabled = {disabled}
+           value={calculation} name="calculation" onChange={(evnt) => handleChange(index, evnt)}>
             <option value={true}>+</option>
             <option value={false}>-</option>
           </select>
           <input
+            disabled = {disabled}
             type="text"
             className="form-control w-25 mx-2"
             name="numValue"
@@ -29,6 +32,7 @@ function AddDeleteRow({ rowsData, deleteRows,  handleChange }) {
             onChange={(evnt) => handleChange(index, evnt)}
           />
           <button
+           disabled = {disabled}
             className="btn btn-danger mx-2"
             onClick={() => deleteRows(index)}>
             Delete
