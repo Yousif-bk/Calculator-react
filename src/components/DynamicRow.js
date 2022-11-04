@@ -12,12 +12,12 @@ function DynamicRow() {
 // calculation
   const calculation = (array) => {
     let sum;
+
+    // filter the array to exclude the negative values
+    array = array.filter(element => element.calculation == "true");
+
     array.reduce((accumulator, obj) => {
-      if(accumulator == undefined && obj.calculation == "false"){
-        setResult(result - Number(array[0].numValue));
-        // setResult(sum)
-      }
-      else if (accumulator !== undefined && obj.calculation == "true") {
+      if(obj.calculation == "true"){
         sum = accumulator + Number(obj.numValue);
         setResult(sum);
       } 
@@ -43,8 +43,7 @@ function DynamicRow() {
     const { name, value } = evnt.target;
     const rowsInput = [...rowsData];
     rowsInput[index][name] = value;
-    // console.log(rowsInput, "rowsInput");
-
+    
     // Call calculation method
     calculation(rowsInput);
 

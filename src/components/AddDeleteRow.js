@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 function AddDeleteRow({ rowsData, deleteRows,  handleChange }) {
   // const [disabled, setDisabled] = useState(false)
+  const [, updateState] = useState();
 
+  const forceUpdate = useCallback(() => updateState({}), []);
   const disableRow = (index, evnt)=> {
-    console.log(index)
     const { name, value } = evnt.target;
     const rowsInput = [...rowsData];
     rowsInput[index][name] = value;
 
     rowsInput[index].disabled = true
-
-    // setDisabled(true)
+    forceUpdate()
   }
 
   return rowsData.map((data, index) => {
